@@ -75,7 +75,11 @@
       <view class="title" slot="title">测试列表</view>
       <list></list>
     </panel>
-
+    <panel>
+      <view class="weui-cell">
+      <button type="primary" @tap="code">扫码</button>
+      </view>
+    </panel>
     <toast />
   </view>
 </template>
@@ -223,6 +227,14 @@
       counterEmit (...args) {
         let $event = args[args.length - 1]
         console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`)
+      },
+      code(){
+        console.log("code");
+        wx.scanCode({
+          success(res) {
+            console.log(res);
+          }
+        })
       }
     }
 
